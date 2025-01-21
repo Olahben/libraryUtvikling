@@ -27,6 +27,8 @@ async function main() {
         update: {},
         create: {
             name: '1984',
+            shortDescription: 'A dystopian social science fiction novel',
+            imageUrl: 'https://www.norli.no/media/catalog/product/9/7/9780141036144_1_1.jpg?auto=webp&format=pjpg&width=480&height=375&fit=cover',
             author: 'George Orwell',
             publishedAt: new Date('1949-06-08'),
             genreId: genre.id,
