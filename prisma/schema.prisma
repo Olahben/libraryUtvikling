@@ -16,7 +16,9 @@ datasource db {
 model Book {
   id Int @id @default(autoincrement())
   name String @db.VarChar(255)
+  shortDescription String @db.Text
   author String @db.VarChar(255)
+  imageUrl String @db.VarChar(255)
   publishedAt DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
