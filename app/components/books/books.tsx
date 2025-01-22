@@ -2,24 +2,13 @@ import React from 'react';
 import { prisma } from '@/lib/prisma';
 import BookCard from '../bookCard';
 
-interface BookCardProps {
-    id: number;
-    name: string;
-    shortDescription: string;
-    imageUrl: string;
-    author:string;
-    publishedAt: Date;
-    genre: string;
-    thematicKeywords: string[];
-}
-
 export default async function Books() {
 const books = await prisma.book.findMany();
 
 
   return (
-    <div className="flex px-3">
-        <ul>
+    <div className="flex px-3 flex-row w-full">
+        <ul className="flex flex-row justify-start w-full gap-x-6 gap-y-5">
         {(books).map((book) => (
           <li className="" key={book.name}>
             <BookCard
