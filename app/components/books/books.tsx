@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma';
 import BookCard from '../bookCard';
 
 interface BookCardProps {
+    id: number;
     name: string;
     shortDescription: string;
     imageUrl: string;
@@ -22,6 +23,7 @@ const bookCards: BookCardProps[] = await Promise.all(
         });
 
         return {
+            id: book.id,
             name: book.name,
             author: book.author,
             publishedAt: book.publishedAt,
@@ -40,6 +42,7 @@ const bookCards: BookCardProps[] = await Promise.all(
         {(bookCards).map((book) => (
           <li className="" key={book.name}>
             <BookCard
+            id={book.id}
               name={book.name}
               author={book.author}
               publishedAt={book.publishedAt}
