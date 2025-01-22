@@ -31,8 +31,8 @@ async function main() {
             imageUrl: 'https://www.norli.no/media/catalog/product/9/7/9780141036144_1_1.jpg?auto=webp&format=pjpg&width=480&height=375&fit=cover',
             author: 'George Orwell',
             publishedAt: new Date('1949-06-08'),
-            genreId: genre.id,
-            thematicKeywordId: [keyword.id],
+            genre: "Science Fiction",
+            thematicKeywords: ["Dystopian", "Political Fiction"],
         },
     });
 

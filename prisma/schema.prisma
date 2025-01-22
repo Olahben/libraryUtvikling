@@ -22,8 +22,8 @@ model Book {
   publishedAt DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  genreId Int
-  thematicKeywordId Int[]
+  genre String @db.VarChar(255)
+  thematicKeywords String[]
 }
 
 model Genre {
