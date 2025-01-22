@@ -1,4 +1,6 @@
 import Books from "./components/books/books";
+import CreateBookButton from "./components/buttons/createBookButton";
+import CreateBookModal from "./components/modals/createBookModal";
 
 export default function Home() {
 // const [isMarking, setIsMarking] = useState(false);
@@ -12,7 +14,8 @@ export default function Home() {
     <div className="flex flex-col mb-6">
     <p className="text-4xl font-sans font-semibold text-primary">Bibliotek applikasjon</p>
     <div className="flex gap-x-2">
-      <div className="mt-2 btn btn-primary w-fit uppercase transition-transform duration-300 ease-in-out transform hover:scale-105">Add book</div>
+    <CreateBookButton />
+    <CreateBookModal />
       {/* {isMarking ? (
         <div
         onClick={handleMark}
