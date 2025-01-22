@@ -1,8 +1,10 @@
 "use client"
 import React, {useState} from 'react';
 import Image from 'next/image';
+import { deleteBook } from '../actions/books';
 
 interface BookCardProps {
+    id: number;
     name: string;
     shortDescription: string;
     imageUrl: string;
@@ -12,7 +14,17 @@ interface BookCardProps {
     thematicKeywords: string[];
 }
 
-const BookCard: React.FC<BookCardProps> = ({ name, shortDescription, imageUrl, author, publishedAt, genre, thematicKeywords }) => {
+const BookCard: React.FC<BookCardProps> = ({ id, name, shortDescription, imageUrl, author, publishedAt, genre, thematicKeywords }) => {
+
+    async function handleDelete() {
+        console.log("Deleting book with id: ", id);
+        const result = await deleteBook(id);
+        if (result.success) {
+            alert("Book deleted successfully");
+        } else {
+            alert("Failed to delete book");
+        }
+    }
 
     const [showUpdateText, setShowUpdateText] = useState(false);
 
@@ -41,7 +53,7 @@ const BookCard: React.FC<BookCardProps> = ({ name, shortDescription, imageUrl, a
                     <p className="text-sm text-gray-700">Last updated on {new Date().toLocaleDateString()}</p>
                     <div className="flex text-sm gap-x-2 text-center justify-center">
                         <p className="hover:text-blue-500 cursor-pointer">update</p>
-                        <p className="hover:text-blue-500 cursor-pointer">delete</p>
+                        <p onClick={handleDelete} className="hover:text-blue-500 cursor-pointer">delete</p>
                     </div>
                 </div>
             )}
