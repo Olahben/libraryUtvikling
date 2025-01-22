@@ -18,6 +18,12 @@ const CreateBookModal = () => {
         </label>
         <input type="text" id="author" className="input input-bordered" />
       </div>
+    <div className="form-control">
+        <label className="label" htmlFor="description">
+            <span className="label-text">Description</span>
+        </label>
+        <textarea id="description" className="textarea textarea-bordered"></textarea>
+    </div>
       <div className="form-control">
         <label className="label" htmlFor="publishedAt">
           <span className="label-text">Published At</span>
@@ -35,20 +41,19 @@ const CreateBookModal = () => {
         <option value="fantasy">Fantasy</option>
         <option value="science-fiction">Science Fiction</option>
         <option value="biography">Biography</option>
+        <option value="romance">Romance</option>
+        <option value="thriller">Thriller</option>
+        <option value="historical">Historical</option>
+        <option value="self-help">Self-Help</option>
+        <option value="poetry">Poetry</option>
       </select>
     </div>
     <div className="form-control">
-      <label className="label" htmlFor="tags">
-        <span className="label-text">Tags</span>
-      </label>
-      <select id="tags" className="select select-bordered" multiple>
-        <option value="bestseller">Bestseller</option>
-        <option value="classic">Classic</option>
-        <option value="new-release">New Release</option>
-        <option value="award-winner">Award Winner</option>
-        <option value="recommended">Recommended</option>
-      </select>
-      </div>
+        <label className="label" htmlFor="keywords">
+            <span className="label-text">Thematic keywords</span>
+        </label>
+        <input type="text" id="keywords" className="input input-bordered" placeholder="Enter keywords separated by commas" />
+    </div>
     </form>
 
     <div className="modal-action">
