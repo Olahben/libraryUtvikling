@@ -12,7 +12,7 @@ const CreateBookModal = () => {
         imageUrl: "",
         author: "",
         publishedAt: new Date(),
-        genre: "",
+        genre: "Fiction",
         thematicKeywords: [],
     });
 
@@ -88,7 +88,7 @@ const CreateBookModal = () => {
       <label className="label" htmlFor="genre">
         <span className="label-text">Genre</span>
       </label>
-      <select required id="genre" className="select select-bordered" value={book.genre} onChange={handleInputChange} >
+      <select value={book.genre} required id="genre" className="select select-bordered" onChange={handleInputChange} >
         <option value="fiction">Fiction</option>
         <option value="non-fiction">Non-Fiction</option>
         <option value="mystery">Mystery</option>
