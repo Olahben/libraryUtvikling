@@ -37,3 +37,27 @@ export async function createBook(book:Book) {
         console.log(error);
     }
 }
+
+export async function UpdateBook(book:Book) {
+    console.log(book);
+    try {
+        await prisma.book.update({
+            where: {
+                id: book.id,
+            },
+            data: {
+                name: book.name,
+                shortDescription: book.shortDescription,
+                imageUrl: book.imageUrl,
+                author: book.author,
+                publishedAt: book.publishedAt,
+                updatedAt: new Date(),
+                genre: book.genre,
+                thematicKeywords: book.thematicKeywords,
+            },
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
