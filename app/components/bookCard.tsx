@@ -2,6 +2,8 @@
 import React, {useState} from 'react';
 import Image from 'next/image';
 import { deleteBook } from '../actions/books';
+import UpdateBookModal from './modals/updateBookModal';
+import { Book } from '../models/book';
 
 interface BookCardProps {
     id: number;
@@ -15,6 +17,16 @@ interface BookCardProps {
 }
 
 const BookCard: React.FC<BookCardProps> = ({ id, name, shortDescription, imageUrl, author, publishedAt, genre, thematicKeywords }) => {
+    const book: Book = {
+        id,
+        name,
+        shortDescription,
+        imageUrl,
+        author,
+        publishedAt,
+        genre,
+        thematicKeywords,
+    };
 
     async function handleDelete() {
         console.log("Deleting book with id: ", id);
@@ -52,7 +64,8 @@ const BookCard: React.FC<BookCardProps> = ({ id, name, shortDescription, imageUr
                 <div className="absolute bottom-0 left-0 w-full bg-gray-200 text-center p-1">
                     <p className="text-sm text-gray-700">Last updated on {new Date().toLocaleDateString()}</p>
                     <div className="flex text-sm gap-x-2 text-center justify-center">
-                        <p className="hover:text-blue-500 cursor-pointer">update</p>
+                        <p onClick={() => (document.getElementById("update_book_modal") as HTMLDialogElement).showModal()} className="hover:text-blue-500 cursor-pointer">update</p>
+                        <UpdateBookModal book={book} />
                         <p onClick={handleDelete} className="hover:text-blue-500 cursor-pointer">delete</p>
                     </div>
                 </div>

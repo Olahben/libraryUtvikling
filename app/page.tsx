@@ -12,7 +12,7 @@ export default function Home() {
   return (
   <div className="flex p-2 bg-white flex-col">
     <div className="flex flex-col mb-6">
-    <p className="text-4xl font-sans font-semibold text-primary">Bibliotek applikasjon</p>
+    <p className="text-4xl font-sans font-semibold text-primary">Library</p>
     <div className="flex gap-x-2">
     <CreateBookButton />
     <CreateBookModal />
