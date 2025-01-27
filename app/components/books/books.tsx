@@ -1,15 +1,46 @@
-import React from 'react';
-import { prisma } from '@/lib/prisma';
+"use client";
+import React, { useState } from 'react';
+import { GetMany, GetManyWithThemes } from '@/app/actions/books';
 import BookCard from '../bookCard';
+import GenreAndThemesSearch from './searchForGenreAndThemes';
+import { Book } from '@/app/models/book';
 
-export default async function Books() {
-const books = await prisma.book.findMany();
+export default function Books() {
+const [books, setBooks] = React.useState<Book[]>([]);
+const [isClient, setIsClient] = useState(false);
+
+React.useEffect(() => {
+  setIsClient(true);
+  GetMany().then((data) => {
+    if (data) {
+      setBooks(data);
+    }
+  });
+}, []);
+
+function searchForBooksWithThemes(text: string) {
+  GetManyWithThemes(text).then(resultBooks => {
+    if (resultBooks.length > 0) {
+      setBooks(resultBooks);
+    } else {
+      GetMany().then((data) => {
+        if (data) {
+          setBooks(data);
+        }
+      });
+    }
+  });
+}
 
 
+  if (!isClient) {
+    return null;
+  } else {
   return (
-    <div className="flex px-3 flex-row w-full">
+    <div className="flex px-3 flex-col w-full">
+        <GenreAndThemesSearch searchCallback={searchForBooksWithThemes} />
         <ul className="flex flex-row justify-start w-full gap-x-6 gap-y-5">
-        {(books).map((book) => (
+        {books.map((book) => (
           <li className="" key={book.name}>
             <BookCard
             id={book.id}
@@ -26,4 +57,5 @@ const books = await prisma.book.findMany();
       </ul>
     </div>
   );
+}
 };
