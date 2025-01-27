@@ -1,14 +1,21 @@
+"use client";
 import Books from "./components/books/books";
 import CreateBookButton from "./components/buttons/createBookButton";
 import CreateBookModal from "./components/modals/createBookModal";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
 // const [isMarking, setIsMarking] = useState(false);
 
 // const handleMark = () => {
 //   setIsMarking(!isMarking);
 // };
 
+useEffect(() => {
+  setIsClient(true);
+}, [])
+if (isClient) {
   return (
   <div className="flex p-2 bg-white flex-col">
     <div className="flex flex-col mb-6">
@@ -34,4 +41,5 @@ export default function Home() {
     <Books />
   </div>
   );
+}
 }
