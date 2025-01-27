@@ -8,14 +8,24 @@ interface props {
 const GenreAndThemesSearch = (props: props) => {
     let searchText = "";
 
+    function debounce(callback: (event: React.ChangeEvent<HTMLInputElement>) => void, delay: number) {
+        let timeout: any;
+        return function (...args: [React.ChangeEvent<HTMLInputElement>]) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => callback(...args), delay)
+        }
+    }
+
     function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         searchText = event.target.value;
         props.searchCallback(searchText);
     }
 
+    const debouncedHandleInputChange = debounce(handleInputChange, 500);
+
   return (
     <label className="input input-bordered flex items-center gap-2 max-w-md mb-5">
-  <input type="text" className="grow" placeholder="Search for themes (comma separated)" onChange={handleInputChange} />
+  <input type="text" className="grow" placeholder="Search for themes (comma separated)" onChange={debouncedHandleInputChange} />
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
