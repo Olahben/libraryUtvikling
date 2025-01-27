@@ -61,3 +61,22 @@ export async function UpdateBook(book:Book) {
         console.log(error);
     }
 }
+
+export async function GetManyWithThemes(themes: string) {
+    const thematicKeyWordsArr = themes.split(",");
+    return await prisma.book.findMany({
+        where: {
+        thematicKeywords: {
+            hasSome: thematicKeyWordsArr,
+        }
+        }
+    })
+}
+
+export async function GetMany() {
+    try {
+        return await prisma.book.findMany();
+    } catch (error) {
+        console.log(error);
+    }
+}
