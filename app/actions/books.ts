@@ -1,6 +1,6 @@
 "use server";
 import { prisma } from '@/lib/prisma';
-import { Book } from "../models/book";
+import { Book } from '@prisma/client';
 
 export async function deleteBook(id:number) {
     console.log("Deleting book with id: ", id);
@@ -17,8 +17,21 @@ export async function deleteBook(id:number) {
     }
 }
 
+export async function GetBook(id: number): Promise<Book | null> {
+    try {
+        return await prisma.book.findFirst({
+            where: {
+                id: id
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
 export async function createBook(book:Book) {
-    console.log(book);
+    book.thematicKeywords = book.thematicKeywords.map(keyword => keyword.trim());
     try {
         await prisma.book.create({
             data: {
