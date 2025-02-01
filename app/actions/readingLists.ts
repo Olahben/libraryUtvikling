@@ -3,7 +3,10 @@ import { prisma } from '@/lib/prisma';
 import { ReadingList } from '@prisma/client';
 import { Book } from '@prisma/client';
 import { GetBook } from './books';
-import { read } from 'fs';
+
+export async function getAll(): Promise<ReadingList[]> {
+    return await prisma.readingList.findMany();
+}
 
 export async function createReadingList(readingList: ReadingList) {
     // Ensure that all books have different genres
