@@ -1,8 +1,10 @@
 "use client";
 import Books from "./components/books/books";
 import CreateBookButton from "./components/buttons/createBookButton";
+import CreateReadingListButton from "./components/buttons/createReadingListButton";
 import CreateBookModal from "./components/modals/createBookModal";
 import { useState, useEffect } from "react";
+import CreateReadingListModal from "./components/modals/createReadingList";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -22,6 +24,8 @@ if (isClient) {
     <p className="text-4xl font-sans font-semibold text-primary">Library</p>
     <div className="flex gap-x-2">
     <CreateBookButton />
+    <CreateReadingListButton />
+    <CreateReadingListModal />
     <CreateBookModal />
       {/* {isMarking ? (
         <div
