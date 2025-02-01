@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Book } from '@/app/models/book';
+import { Book } from '@prisma/client';
 import { UpdateBook } from '@/app/actions/books';
 
 
@@ -12,7 +12,7 @@ const UpdateBookModal: React.FC<UpdateBookModalProps> = ({ book }) => {
     const [updatedBook, setBook] = React.useState<Book>(book);
 
     
-    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    function handleInputChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
         setBook({ ...updatedBook, [event.target.id]: event.target.value });
 
     }
