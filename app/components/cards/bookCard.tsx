@@ -1,9 +1,9 @@
 "use client"
 import React, {useState} from 'react';
 import Image from 'next/image';
-import { deleteBook } from '../actions/books';
-import UpdateBookModal from './modals/updateBookModal';
-import { Book } from '../models/book';
+import { deleteBook } from '@/app/actions/books';
+import UpdateBookModal from '../modals/updateBookModal';
+import { Book } from "../../models/book";
 
 interface BookCardProps {
     id: number;

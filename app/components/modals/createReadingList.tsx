@@ -39,6 +39,10 @@ const CreateReadingListModal = () => {
 
     async function handleSubmit(event: React.FormEvent) {
         event.preventDefault();
+        if (!readingList.name || readingList.books.length === 0) {
+            alert("Name and books are required.");
+            return;
+        }
         console.log(readingList);
         try {
         await createReadingList(readingList);

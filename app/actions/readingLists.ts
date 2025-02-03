@@ -8,6 +8,18 @@ export async function getAll(): Promise<ReadingList[]> {
     return await prisma.readingList.findMany();
 }
 
+export async function deleteReadingList(id: number): Promise<void | Error> {
+    try {
+        await prisma.readingList.delete({
+            where: {
+                id: id
+            }
+        })
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 export async function createReadingList(readingList: ReadingList) {
     // Ensure that all books have different genres
     // Ensure that all books have at least one common thematic keyword

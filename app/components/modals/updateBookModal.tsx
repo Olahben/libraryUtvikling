@@ -19,6 +19,10 @@ const UpdateBookModal: React.FC<UpdateBookModalProps> = ({ book }) => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        if (!updatedBook.name || !updatedBook.author || !updatedBook.shortDescription || !updatedBook.imageUrl || !updatedBook.publishedAt || !updatedBook.genre || !updatedBook.thematicKeywords.length) {
+          alert("All fields are required and must be filled out.");
+          return;
+        }
         console.log(updatedBook);
         await UpdateBook(updatedBook);
       };

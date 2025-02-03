@@ -42,6 +42,10 @@ const CreateBookModal = () => {
 
       const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        if (!book.name || !book.shortDescription || !book.imageUrl || !book.author || !book.publishedAt || !book.genre || !book.thematicKeywords.length) {
+          alert("Please fill out all fields.");
+          return;
+        }
         console.log(book);
         await createBook(book);
       };
